@@ -1,5 +1,5 @@
 # lms-migracja-z-mysql-do-postgresql
-LMS migarcja bazy danych z MySQL do PostgreSQL z wykorzystaniem pgloader.
+LMS migarcja bazy danych z MySQL do PostgreSQL z wykorzystaniem https://pgloader.io/
 
 # UWAGA!
 Przestawiony sposób jest bardzo uproszczony i nie uwzględnia całej procedury migracji. Pokazuję tylko kierunek, ale drogę musisz sobię sam wybrać.
