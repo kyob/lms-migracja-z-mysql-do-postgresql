@@ -1,0 +1,25 @@
+LOAD DATABASE
+	FROM mysql://MYSQL_USER:MYSQL_PASSWORD@localhost/lms
+	INTO postgresql://POSTGRESQL_USER:POSTGRESQL_PASSWORD@localhost/lmsplus
+	WITH on error stop, data only, disable triggers, truncate
+
+	CAST
+		column cash.type to smallint drop typemod keep default keep not null,
+		column customers.pin to integer drop typemod keep default keep not null,
+		column netdevices.ports to integer drop typemod keep default keep not null,
+		column stats.upload to bigint drop typemod keep default keep not null,
+		column stats.download to bigint drop typemod keep default keep not null,
+		column up_customers.enabled to smallint drop typemod keep default keep not null,
+		-- column raddact.framedipaddresess to inet drop typemod keep not null,
+		type smallint  with extra auto_increment
+			to serial drop typemod keep default keep not null,
+		type smallint when (= precision 6)
+			to smallint drop typemod keep default keep not null,
+		type int  with extra auto_increment
+			to serial drop typemod keep default keep not null,
+		type int  when (= precision 11)
+			to integer drop typemod keep default keep not null,
+		type tinyint  when (= precision 1)
+			to smallint drop typemod keep default keep not null
+	
+	ALTER SCHEMA 'lms' RENAME TO 'public';
